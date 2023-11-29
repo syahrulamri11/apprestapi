@@ -65,5 +65,17 @@ exports.changeDataById = function(req, res) {
     } else {
       response.ok('Berhasil ubah data', res)
     }
+  });
+};
+//hapus data berdasarkan id
+exports.deleteDataById = function(req, res) {
+  var idFood = req.body.idFood;
+
+  connection.query('DELETE FROM culinary WHERE idFood = ?', [idFood], function(error, rows, fields) {
+    if (error) {
+      console.log(error);
+    } else {
+      response.ok('Berhasil hapus data', res);
+    }
   })
 }
