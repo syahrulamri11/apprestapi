@@ -49,3 +49,21 @@ exports.addNewData = function(req, res) {
     }
   });
 };
+
+//ubah data berdasarkan id
+exports.changeDataById = function(req, res) {
+  var idFood = req.body.idFood;
+  var strFood = req.body.strFood;
+  var strIngredients = req.body.strIngredients;
+  var strArea = req.body.strArea;
+  var strDesc = req.body.strDesc;
+
+  connection.query('UPDATE culinary SET strFood=?, strIngredients=?, strArea=?, strDesc=? WHERE idFood=?', [strFood, strIngredients, strArea, strDesc, idFood],
+  function(error, rows, fields) {
+    if(error) {
+      console.log(error);
+    } else {
+      response.ok('Berhasil ubah data', res)
+    }
+  })
+}
