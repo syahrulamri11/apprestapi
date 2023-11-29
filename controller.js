@@ -31,3 +31,21 @@ exports.dataApiById = function(req, res) {
     }
   );
 };
+
+//menambahkan data API
+exports.addNewData = function(req, res) {
+  var strFood = req.body.strFood;
+  var strIngredients = req.body.strIngredients;
+  var strArea = req.body.strArea;
+  var strDesc = req.body.strDesc;
+
+  connection.query('INSERT INTO culinary (strFood, strIngredients, strArea, strDesc) VALUES(?, ?, ?, ?)',
+  [strFood, strIngredients, strArea, strDesc],
+  function(error, rows, fields) {
+    if(error) {
+      console.log(error);
+    } else {
+      response.ok('Berhasil Menambahkan data!', res)
+    }
+  });
+};

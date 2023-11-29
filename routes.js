@@ -12,4 +12,7 @@ module.exports = function(app) {
   app.route('/tampil/:id')
   .get(jsonku.dataApiById);
 
+  app.route('/tambah')
+  .post(jsonku.addNewData);
+  
 };
