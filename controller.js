@@ -17,3 +17,17 @@ exports.allDataApi = function(req, res) {
     }
   });
 };
+
+//menampilkan semua data API by id
+exports.dataApiById = function(req, res) {
+  let id = req.params.id;
+  connection.query('SELECT * FROM culinary WHERE idFood = ?', [id],
+    function(error, rows, fields) {
+      if(error) {
+        console.log(error);
+      } else {
+        response.ok(rows, res)
+      }
+    }
+  );
+};
